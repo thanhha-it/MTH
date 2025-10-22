@@ -1,0 +1,20 @@
+# 🚀 Nâng cấp Windows Home → Pro bằng Command Prompt
+> **Lưu ý:** Hướng dẫn này chỉ giúp **chuyển phiên bản** Windows (Home → Pro) bằng *generic key chính thức của Microsoft*.  
+> Sau khi nâng cấp xong, bạn cần nhập **key bản quyền thật** để kích hoạt hợp pháp.
+---
+## 📋 Mô tả ngắn
+Cách nhanh để nâng cấp Windows Home → Pro bằng lệnh `changepk.exe` (sử dụng generic key để nâng cấp **phiên bản**, chưa kích hoạt bản quyền).  
+Sau khi hoàn tất, bạn có thể nhập key thật để kích hoạt.
+---
+## ⚙️ Yêu cầu
+- ✅ Quyền **Administrator** trên máy  
+- 🌐 **Kết nối Internet** (Windows có thể tải thêm thành phần)  
+- 💾 **Sao lưu dữ liệu** quan trọng trước khi nâng cấp  
+---
+## 🧭 Các bước thực hiện
+### 1️⃣ Mở Command Prompt với quyền admin  
+**Start** → gõ `cmd` → chuột phải → **Run as administrator**
+---
+### 2️⃣ Chạy lệnh nâng cấp (generic key chuyển sang Pro)  
+Dán vào cửa sổ CMD và nhấn **Enter**:
+changepk.exe /ProductKey VK7JG-NPHTM-C97JM-9MPGT-3V66T
