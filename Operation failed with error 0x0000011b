@@ -1,0 +1,9 @@
+Đây là lỗi thường gặp khi kết nối máy in qua mạng nội bộ sau một số bản cập nhật Windows (đặc biệt từ tháng 9/2021 trở đi). Lỗi này chủ yếu liên quan đến bảo mật RPC (Remote Procedure Call).
+✅ Cách khắc phục nhanh nhất (trên máy chia sẻ máy in):
+🔧 Sửa qua Registry
+1. Nhấn Windows + R → gõ regedit → Enter.
+2. Truy cập đến đường dẫn sau: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print
+3. Bấm chuột phải vào Print → chọn New > DWORD (32-bit) Value.
+4. Đặt tên là: RpcAuthnLevelPrivacyEnabled
+5. Nhấp đúp vào khóa vừa tạo → đặt giá trị là 0.
+6. Khởi động lại máy chia sẻ máy in.
