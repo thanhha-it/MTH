@@ -1,0 +1,26 @@
+🧩 Tự động đồng bộ ngày giờ cho Windows
+1️⃣ Mở Notepad
+Dán nội dung sau:
+
+@echo off
+:: Auto Time Sync Script
+net start w32time >nul 2>&1
+w32tm /resync
+exit
+
+2️⃣ Lưu file thành
+sync_time.bat
+Save as type: All Files
+Encoding: UTF-8 hoặc ANSI
+
+3️⃣ Copy vào thư mục khởi động:
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+
+✅ Kết quả
+→ Mỗi khi bật máy, Windows sẽ tự động đồng bộ ngày giờ qua Internet — rất hữu ích khi pin CMOS hư hoặc máy reset giờ.
+💡 Kiểm tra thủ công (nếu cần)
+w32tm /query /status
+
+📘 Gợi ý
+Nếu muốn thay NTP server, dùng:
+w32tm /config /update /manualpeerlist:"pool.ntp.org"
