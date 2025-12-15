@@ -1,0 +1,37 @@
+=======Quét Folder Nas Synology (VD: MainServer) + thư mục cấp 1, hiển thị: Folder → Group → Quyền → User
+
+find /volume1/MainServer -mindepth 0 -maxdepth 1 -type d | while read d; do
+  echo "=============================="
+  echo "FOLDER: $d"
+  synoacltool -get "$d" 2>/dev/null \
+  | awk -F':' '/group:/ {print $2 ":" $4}' \
+  | sort -u \
+  | while IFS=: read g p; do
+      echo "  GROUP: $g"
+      echo "    PERMISSION: $p"
+      synogroup --get "$g" 2>/dev/null \
+      | sed '1,2d' \
+      | sed 's/^/      - /'
+    done
+done
+
+
+=======Quét MainServer + thư mục cấp 1, xuất CSV có Folder – Group – Permission – User
+OUT="/volume1/MainServer/ACL_Report_Level1.csv"
+
+echo "Folder,Group,Permission,User" > "$OUT"
+
+find /volume1/MainServer -mindepth 0 -maxdepth 1 -type d | while read d; do
+  synoacltool -get "$d" 2>/dev/null \
+  | awk -F':' '/group:/ {print $2 ":" $4}' \
+  | sort -u \
+  | while IFS=: read g p; do
+      synogroup --get "$g" 2>/dev/null \
+      | sed '1,2d' \
+      | while read u; do
+          echo "\"$d\",\"$g\",\"$p\",\"$u\"" >> "$OUT"
+        done
+    done
+done
+
+echo "DONE: $OUT"
